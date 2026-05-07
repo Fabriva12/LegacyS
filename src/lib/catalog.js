@@ -6,7 +6,7 @@ import { ref, listAll } from 'firebase/storage'
 import { storage } from './firebase'
 
 // ─── Presentación: labels e iconos (solo estética) ───
-const CATEGORY_META = {
+export const CATEGORY_META = {
   camisetas: { label: 'Camisetas', icon: '👕' },
   calzado: { label: 'Calzado', icon: '👟' },
   accesorios: { label: 'Accesorios', icon: '🎒' },

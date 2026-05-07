@@ -15,9 +15,7 @@ function App() {
       <main className="page-enter container mx-auto px-4 py-8 min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:category" element={<Category />} />
-          <Route path="/:category/:subcategory" element={<Category />} />
-          <Route path="/:category/:subcategory/:brand" element={<Category />} />
+          <Route path="/:category/*" element={<Category />} />
         </Routes>
       </main>
       <Footer />
