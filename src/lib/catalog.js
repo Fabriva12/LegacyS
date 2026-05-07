@@ -9,17 +9,21 @@ import { storage } from './firebase'
 const CATEGORY_META = {
   camisetas: { label: 'Camisetas', icon: '👕' },
   calzado: { label: 'Calzado', icon: '👟' },
+  accesorios: { label: 'Accesorios', icon: '🎒' },
 }
 
 const IMAGE_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'webp', 'gif'])
 
 /**
  * Convierte un slug en un label legible.
+ * Soporta caracteres Unicode (ñ, tildes, etc.) correctamente.
  */
 export function formatLabel(slug) {
   return slug
     .replace(/-/g, ' ')
-    .replace(/\b\w/g, (char) => char.toUpperCase())
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 }
 
 /**

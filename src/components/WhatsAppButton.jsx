@@ -19,7 +19,7 @@ function WhatsAppButton({ product, className = '', icon = 'whatsapp' }) {
   }
 
   // Obtener el número de WhatsApp desde las variables de entorno
-  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '0000000000'
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER
 
   // Formatear el precio a Colones Costarricenses (₡)
   const formattedPrice = new Intl.NumberFormat('es-CR', {
@@ -29,11 +29,11 @@ function WhatsAppButton({ product, className = '', icon = 'whatsapp' }) {
 
   // Crear el mensaje para WhatsApp
   // Incluye: saludo, nombre del producto, precio en Colones, y URL de la imagen
-  let message = `Hola, quiero comprar: ${product.name} - ${formattedPrice}`
+  let message = `Hola, me interesa este producto:\n${product.name} - ${formattedPrice}`
   
   // Agregar la URL de la imagen si existe (product.images es un string)
   if (product.images) {
-    message += `\nImagen: ${product.images}`
+    message += `\n${product.images}`
   }
 
   // Codificar el mensaje para URL y generar el link de wa.me
@@ -60,7 +60,7 @@ function WhatsAppButton({ product, className = '', icon = 'whatsapp' }) {
           className="w-5 h-5"
         >
           <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-          <line x1="3" y1="6" x2="21" у2="6" />
+          <line x1="3" y1="6" x2="21" y2="6" />
           <path d="M16 10a4 4 0 1 1-8 0" />
         </svg>
       ) : (

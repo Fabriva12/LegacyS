@@ -12,9 +12,9 @@ function ProductCard({ product }) {
 
   if (!imageUrl) return null
 
-  // Construir enlace de WhatsApp
+  // Construir enlace de WhatsApp con nombre + imagen
   const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '0000000000'
-  const message = `Hola, me interesa este producto:\nNombre: ${name}`
+  const message = `Hola, me interesa este producto:\n${name}\n${imageUrl}`
 
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
