@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 function Footer() {
   // Obtener datos de las variables de entorno
   const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER
-  const instagramUser = import.meta.env.VITE_INSTAGRAM_USERNAME
+  const instagramUrl = import.meta.env.VITE_INSTAGRAM_URL
 
   return (
     <footer className="bg-gunmetal text-mint-cream py-8 mt-auto">
@@ -30,7 +30,7 @@ function Footer() {
         <div className="flex items-center gap-6">
           {/* Instagram - Texto: "Seguinos en Instagram" */}
           <a
-            href={`https://instagram.com/${instagramUser}`}
+            href={instagramUrl || 'https://instagram.com/'}
             target="_blank"
             rel="noopener noreferrer"
             className="text-mint-cream hover:text-vibrant-coral transition-colors font-medium"
