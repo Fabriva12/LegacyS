@@ -1,9 +1,9 @@
 // Componente ProductCard para LegacySport
-// Muestra imagen del producto desde Firebase Storage
-// Al hacer clic, abre WhatsApp con info del producto
+// Muestra la imagen del producto + botón de WhatsApp en la parte inferior
+// La imagen NO es un link directo para evitar aperturas accidentales en mobile
 
 /**
- * Componente ProductCard — imagen + WhatsApp
+ * Componente ProductCard — imagen + botón WhatsApp
  * @param {Object} props
  * @param {Object} props.product - { name, fullPath, imageUrl }
  */
@@ -19,35 +19,33 @@ function ProductCard({ product }) {
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
   return (
-    <div className="product-card rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl">
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="relative block group"
-      >
-        {/* Imagen del producto */}
-        <div className="aspect-square overflow-hidden bg-gunmetal/5">
-          <img
-            src={imageUrl}
-            alt={name}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-            loading="lazy"
-          />
-        </div>
+    <div className="product-card rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl bg-white">
+      {/* Imagen del producto — SIN link directo a WhatsApp */}
+      <div className="aspect-square overflow-hidden bg-gunmetal/5">
+        <img
+          src={imageUrl}
+          alt={name}
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+          loading="lazy"
+        />
+      </div>
 
-        {/* Overlay con botón de compra al hover */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-mint-cream hover:bg-white rounded-full shadow-lg flex items-center gap-2 p-2">
-            <img
-              src="/legacy.png"
-              alt="Logo LegacySport"
-              className="w-8 h-8 object-contain"
-            />
-            <span className="text-gunmetal font-semibold pr-2">Comprar</span>
-          </div>
-        </div>
-      </a>
+      {/* Botón WhatsApp en la parte inferior */}
+      <div className="p-3">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-full bg-vibrant-coral hover:bg-vibrant-coral/80 text-mint-cream font-semibold py-2.5 px-4 rounded-lg transition-colors duration-300"
+        >
+          <img
+            src="/legacy.png"
+            alt="LegacySport"
+            className="w-5 h-5 object-contain"
+          />
+          <span>Consultar por WhatsApp</span>
+        </a>
+      </div>
     </div>
   )
 }

@@ -97,6 +97,43 @@ function Category() {
     return () => { cancelled = true }
   }, [catSlug, subcategory, brand])
 
+  // ─── Banner reutilizable de Camisetas ───
+  function CamisetasBanner() {
+    if (catSlug !== 'camisetas') return null
+    return (
+      <div className="mb-8 p-6 bg-gunmetal/5 rounded-xl border border-gunmetal/10 text-center">
+        <h2 className="text-2xl font-bold text-goldenrod mb-2">
+          👕 100% Personalizables
+        </h2>
+        <div className="grid grid-cols-3 gap-4 mb-4 max-w-lg mx-auto">
+          <div>
+            <span className="block text-sm text-gunmetal/60">Jugador</span>
+            <span className="block text-lg font-bold text-gunmetal">₡23.000</span>
+          </div>
+          <div>
+            <span className="block text-sm text-gunmetal/60">Retro</span>
+            <span className="block text-lg font-bold text-gunmetal">₡23.000</span>
+          </div>
+          <div>
+            <span className="block text-sm text-gunmetal/60">Fan</span>
+            <span className="block text-lg font-bold text-gunmetal">₡21.000</span>
+          </div>
+        </div>
+        <p className="text-gunmetal/80">
+          ¿No encontrás la camiseta que andás buscando?{' '}
+          <a
+            href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || '0000000000'}?text=${encodeURIComponent('Hola, busco una camiseta que no está en el catálogo. ¿Me ayudan?')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-goldenrod font-semibold hover:underline"
+          >
+            Envianos una foto y la conseguimos 👉
+          </a>
+        </p>
+      </div>
+    )
+  }
+
   // ─── Helpers de render ───
   if (state.loading) {
     return (
@@ -171,39 +208,7 @@ function Category() {
           </h1>
         </div>
 
-        {/* Banner informativo solo para Camisetas */}
-        {catSlug === 'camisetas' && (
-          <div className="mb-8 p-6 bg-gunmetal/5 rounded-xl border border-gunmetal/10 text-center">
-            <h2 className="text-2xl font-bold text-goldenrod mb-2">
-              👕 100% Personalizables
-            </h2>
-            <div className="grid grid-cols-3 gap-4 mb-4 max-w-lg mx-auto">
-              <div>
-                <span className="block text-sm text-gunmetal/60">Jugador</span>
-                <span className="block text-lg font-bold text-gunmetal">₡23.000</span>
-              </div>
-              <div>
-                <span className="block text-sm text-gunmetal/60">Retro</span>
-                <span className="block text-lg font-bold text-gunmetal">₡23.000</span>
-              </div>
-              <div>
-                <span className="block text-sm text-gunmetal/60">Fan</span>
-                <span className="block text-lg font-bold text-gunmetal">₡21.000</span>
-              </div>
-            </div>
-            <p className="text-gunmetal/80">
-              ¿No encontrás la camiseta que andás buscando?{' '}
-              <a
-                href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || '0000000000'}?text=${encodeURIComponent('Hola, busco una camiseta que no está en el catálogo. ¿Me ayudan?')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-goldenrod font-semibold hover:underline"
-              >
-                Envianos una foto y la conseguimos 👉
-              </a>
-            </p>
-          </div>
-        )}
+        <CamisetasBanner />
 
         {subcategories.length === 0 ? (
           <div className="text-center py-12">
@@ -252,6 +257,8 @@ function Category() {
           </h1>
         </div>
 
+        <CamisetasBanner />
+
         {brands.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-xl text-gunmetal/70">
@@ -293,6 +300,8 @@ function Category() {
             {title}
           </h1>
         </div>
+
+        <CamisetasBanner />
 
         {products.length === 0 ? (
           <div className="text-center py-12">
