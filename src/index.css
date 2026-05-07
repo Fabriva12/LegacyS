@@ -1,0 +1,156 @@
+/* Archivo de estilos principal para LegacySport */
+/* Integra Tailwind CSS y define animaciones personalizadas en CSS puro */
+
+/* Directivas de Tailwind CSS v4 */
+@import "tailwindcss";
+
+/* ============================================
+   PALETA DE COLORES - LEGACYSPORT
+   Definida usando @theme de Tailwind v4
+   Los colores se convierten automáticamente en clases utilitarias
+   ============================================ */
+
+@theme {
+  /* Gunmetal - Color principal oscuro (textos, fondos oscuros) */
+  --color-gunmetal: #383d3b;
+  --color-gunmetal-hsl: 156 4% 23%;
+
+  /* Mint Cream - Fondo claro, áreas de respiro */
+  --color-mint-cream: #e6efe9;
+  --color-mint-cream-hsl: 140 22% 92%;
+
+  /* Goldenrod - Acento cálido (botones CTA, precios) */
+  --color-goldenrod: #d5a021;
+  --color-goldenrod-hsl: 42 73% 48%;
+
+  /* Vibrant Coral - Acento vibrante (hover, elementos activos) */
+  --color-vibrant-coral: #ed6a5a;
+  --color-vibrant-coral-hsl: 7 80% 64%;
+
+  /* Verdigris - Acento frío (links, iconos, detalles) */
+  --color-verdigris: #339989;
+  --color-verdigris-hsl: 171 50% 40%;
+}
+
+/* ============================================
+   ANIMACIONES CSS PERSONALIZADAS
+   Requerimiento: CSS animations ONLY (no Framer Motion)
+   ============================================ */
+
+/* Animación fadeIn: aparece gradualmente desde transparente */
+/* Requisito: from opacity:0 to opacity:1 (sin transform) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación slideUp: desliza hacia arriba mientras aparece */
+/* Requisito: from translateY(20px) + opacity:0 to translateY(0) + opacity:1 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clase para aplicar animación fadeIn */
+/* Requisito: animation 0.5s ease-out */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Clase para aplicar animación slideUp */
+.slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* ============================================
+   ESTILOS PARA TARJETAS DE PRODUCTO
+   Requerimiento: hover con scale + sombra
+   ============================================ */
+
+/* Estilo base de la tarjeta de producto */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover en la tarjeta de producto: escala y sombra más pronunciada */
+/* Requisito: scale(1.05) y shadow-xl (equivalente CSS) */
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* ============================================
+   TRANSICIONES DE PÁGINA
+   Para usar en las páginas principales
+   ============================================ */
+
+/* Clase para entrada de página con fadeIn */
+.page-enter {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* ============================================
+   ESTILOS GENERALES
+   ============================================ */
+
+/* Estilos para el body con imagen de fondo de la marca */
+body {
+  margin: 0;
+  min-height: 100vh;
+  /* Imagen de fondo desde la carpeta public - SIN FONDO EXTRA */
+  background-image: url('/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Pseudo-elemento para crear el efecto de desvanecimiento suave */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Overlay MUCHO MÁS SUAVE - Deja ver el fondo siempre */
+  background: linear-gradient(to bottom, rgba(230, 239, 233, 0.1) 0%, rgba(230, 239, 233, 0.3) 50%, rgba(230, 239, 233, 0.5) 100%);
+  pointer-events: none; /* Para que no bloquee los clics */
+  z-index: -1;
+}
+
+/* Pseudo-elemento para crear el efecto de desvanecimiento */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Overlay usando linear-gradient con sintaxis correcta */
+  background: linear-gradient(to bottom, rgba(230, 239, 233, 0.3) 0%, rgba(230, 239, 233, 0.7) 50%, rgba(230, 239, 233, 0.95) 100%);
+  pointer-events: none; /* Para que no bloquee los clics */
+  z-index: -1;
+}
+
+/* Estilo para el contenedor principal de la app */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Estilos para el main content (donde se renderizan las páginas) */
+main {
+  flex: 1;
+}

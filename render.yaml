@@ -1,0 +1,29 @@
+# Render Configuration
+# https://render.com/docs/blueprint-spec
+#
+# Este archivo define el servicio para Render.
+# Podés importarlo directamente desde Render → New → Blueprint.
+
+services:
+  - type: web
+    name: legacysport
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npx serve -s dist -l $PORT
+    envVars:
+      - key: VITE_FIREBASE_API_KEY
+        sync: false
+      - key: VITE_FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: VITE_FIREBASE_PROJECT_ID
+        sync: false
+      - key: VITE_FIREBASE_STORAGE_BUCKET
+        sync: false
+      - key: VITE_FIREBASE_MESSAGING_SENDER_ID
+        sync: false
+      - key: VITE_FIREBASE_APP_ID
+        sync: false
+      - key: VITE_WHATSAPP_NUMBER
+        sync: false
