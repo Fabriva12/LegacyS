@@ -74,6 +74,11 @@ function Footer() {
                 Accesorios
               </Link>
             </li>
+            <li>
+              <Link to="/entrega-inmediata" className="text-mint-cream/80 hover:text-vibrant-coral transition-colors text-sm">
+                Entrega Inmediata
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

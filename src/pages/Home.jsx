@@ -5,6 +5,14 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getCategories } from '../lib/catalog'
 
+// Mapeo de categorías a imágenes del catálogo en /public
+const CATEGORY_IMAGE = {
+  calzado: '/calzadobaner.png',
+  camisetas: '/banercamiseta.png',
+  accesorios: '/accesoriosbaner.png',
+  'entrega-inmediata': '/entregainmediata.png',
+}
+
 function Home() {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
@@ -80,24 +88,34 @@ function Home() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {categories.map((cat) => (
-              <Link
-                key={cat.fullPath}
-                to={`/${cat.name}`}
-                className="flex items-center gap-4 p-6 rounded-xl bg-mint-cream shadow-md border border-gunmetal/10 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-goldenrod/30"
-              >
-                <span className="text-5xl">{cat.icon}</span>
-                <div>
-                  <span className="text-2xl font-bold text-gunmetal block">
-                    {cat.label}
-                  </span>
-                  <span className="text-sm text-gunmetal/60">
-                    Hacé clic para explorar
-                  </span>
-                </div>
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {categories.map((cat) => {
+              const categoryImage = CATEGORY_IMAGE[cat.name]
+              return (
+                <Link
+                  key={cat.fullPath}
+                  to={`/${cat.name}`}
+                  className="relative group rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02]"
+                >
+                  <img
+                    src={categoryImage}
+                    alt={cat.label}
+                    className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div>
+                      <span className="text-2xl font-bold text-black block">
+                        {cat.label}
+                      </span>
+                      <span className="text-sm text-black/80">
+                        Hacé clic para explorar
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         )}
       </section>

@@ -1,5 +1,5 @@
 // Componente Header para LegacySport
-// Muestra el logo y la navegación principal con las 3 categorías
+// Muestra el logo y la navegación principal con las categorías
 // Responsive: menú hamburguesa en mobile, barra horizontal en desktop
 
 import { useState } from 'react'
@@ -29,13 +29,13 @@ function Header() {
 
   return (
     <header className="bg-gunmetal shadow-md sticky top-0 z-50">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo de LegacySport */}
         <NavLink to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity" onClick={() => setIsMenuOpen(false)}>
           <img
             src="/legacy.png"
             alt="LegacySport Logo"
-            className="h-12 w-auto"
+            className="h-14 w-auto"
           />
           <span className="text-2xl font-bold text-mint-cream hover:text-vibrant-coral transition-colors max-sm:hidden">
             LegacySport
@@ -73,6 +73,9 @@ function Header() {
           <li>
             <NavLink to="/accesorios" className={linkClass}>Accesorios</NavLink>
           </li>
+          <li>
+            <NavLink to="/entrega-inmediata" className={linkClass}>Entrega Inmediata</NavLink>
+          </li>
         </ul>
       </nav>
 
@@ -88,6 +91,9 @@ function Header() {
             </li>
             <li>
               <NavLink to="/accesorios" className={mobileLinkClass} onClick={() => setIsMenuOpen(false)}>Accesorios</NavLink>
+            </li>
+            <li>
+              <NavLink to="/entrega-inmediata" className={mobileLinkClass} onClick={() => setIsMenuOpen(false)}>Entrega Inmediata</NavLink>
             </li>
           </ul>
         </div>

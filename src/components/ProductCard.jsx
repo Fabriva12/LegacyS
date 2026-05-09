@@ -21,11 +21,11 @@ function ProductCard({ product }) {
   return (
     <div className="product-card rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl bg-white">
       {/* Imagen del producto — SIN link directo a WhatsApp */}
-      <div className="aspect-square overflow-hidden bg-gunmetal/5">
+      <div className="aspect-square overflow-hidden bg-gunmetal/5 flex items-center justify-center">
         <img
           src={imageUrl}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+          className="w-full h-full object-contain transition-transform duration-300 hover:scale-110 p-2"
           loading="lazy"
         />
       </div>

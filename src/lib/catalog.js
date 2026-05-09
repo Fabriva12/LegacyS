@@ -10,6 +10,7 @@ export const CATEGORY_META = {
   camisetas: { label: 'Camisetas', icon: '👕' },
   calzado: { label: 'Calzado', icon: '👟' },
   accesorios: { label: 'Accesorios', icon: '🎒' },
+  'entrega-inmediata': { label: 'Entrega Inmediata', icon: '⚡' },
 }
 
 const IMAGE_EXTENSIONS = new Set(['jpg', 'jpeg', 'png', 'webp', 'gif'])
@@ -48,7 +49,7 @@ async function listFolders(path) {
       fullPath: p.fullPath,
     }))
   } catch (e) {
-    console.warn(`Error listando carpetas en ${path}:`, e.message)
+    console.error(`ERROR listando carpetas en "${path}":`, e.code, e.message, e)
     return []
   }
 }
