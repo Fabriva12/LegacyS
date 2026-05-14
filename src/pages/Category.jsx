@@ -78,6 +78,48 @@ function Category() {
     )
   }
 
+  function CalzadoBanner() {
+    if (catSlug !== 'calzado') return null
+    return (
+      <div className="mb-8 p-6 bg-gunmetal/5 rounded-xl border border-gunmetal/10 text-center">
+        <h2 className="text-2xl font-bold text-goldenrod mb-2">
+          👟 Precios de Calzado
+        </h2>
+        <div className="grid grid-cols-2 gap-4 mb-4 max-w-sm mx-auto">
+          <div>
+            <span className="block text-sm text-gunmetal/60">Adultos</span>
+            <span className="block text-lg font-bold text-gunmetal">₡65.000</span>
+          </div>
+          <div>
+            <span className="block text-sm text-gunmetal/60">Niños</span>
+            <span className="block text-lg font-bold text-gunmetal">₡45.000</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  function CalzadoExpressBanner() {
+    if (catSlug !== 'entrega-inmediata' || !segments.includes('calzado')) return null
+    return (
+      <div className="mb-8 p-6 bg-gunmetal/5 rounded-xl border border-gunmetal/10 text-center">
+        <h2 className="text-2xl font-bold text-goldenrod mb-2">
+          ⚡ Entrega Inmediata
+        </h2>
+        <div className="grid grid-cols-2 gap-4 mb-4 max-w-sm mx-auto">
+          <div>
+            <span className="block text-sm text-gunmetal/60">Adultos</span>
+            <span className="block text-lg font-bold text-gunmetal">₡60.000</span>
+          </div>
+          <div>
+            <span className="block text-sm text-gunmetal/60">Niños</span>
+            <span className="block text-lg font-bold text-gunmetal">₡42.000</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (state.loading) {
     return (
       <div className="text-center py-20">
@@ -113,6 +155,8 @@ function Category() {
         </div>
 
         <CamisetasBanner />
+        <CalzadoBanner />
+        <CalzadoExpressBanner />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {state.folders.map((folder) => (
@@ -150,6 +194,8 @@ function Category() {
         </div>
 
         <CamisetasBanner />
+        <CalzadoBanner />
+        <CalzadoExpressBanner />
 
         {state.products.length === 0 ? (
           <div className="text-center py-12">
