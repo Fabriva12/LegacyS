@@ -60,7 +60,7 @@ function Category() {
           </div>
           <div>
             <span className="block text-sm text-gunmetal/60">Fan</span>
-            <span className="block text-lg font-bold text-gunmetal">₡21.000</span>
+            <span className="block text-lg font-bold text-gunmetal">₡22.000</span>
           </div>
         </div>
         <p className="text-gunmetal/80">
