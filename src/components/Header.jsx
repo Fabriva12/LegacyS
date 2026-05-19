@@ -14,31 +14,29 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const linkClass = ({ isActive }) =>
-    `text-lg font-medium transition-colors ${
-      isActive
-        ? 'text-goldenrod border-b-2 border-goldenrod pb-1'
-        : 'text-mint-cream hover:text-vibrant-coral'
+    `text-lg font-medium transition-colors ${isActive
+      ? 'text-goldenrod border-b-2 border-goldenrod pb-1'
+      : 'text-mint-cream hover:text-vibrant-coral'
     }`
 
   const mobileLinkClass = ({ isActive }) =>
-    `block px-4 py-2 rounded-lg transition-colors ${
-      isActive
-        ? 'text-goldenrod bg-gunmetal/50 font-semibold'
-        : 'text-mint-cream hover:text-vibrant-coral hover:bg-gunmetal/30'
+    `block px-4 py-2 rounded-lg transition-colors ${isActive
+      ? 'text-goldenrod bg-gunmetal/50 font-semibold'
+      : 'text-mint-cream hover:text-vibrant-coral hover:bg-gunmetal/30'
     }`
 
   return (
     <header className="bg-gunmetal shadow-md sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo de LegacySport */}
-        <NavLink to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity" onClick={() => setIsMenuOpen(false)}>
+        <NavLink to="/" className="flex items-center gap-6 hover:opacity-80 transition-opacity" onClick={() => setIsMenuOpen(false)}>
           <img
             src="/legacy.png"
             alt="LegacySport Logo"
             className="h-14 w-auto"
           />
           <span className="text-2xl font-bold text-mint-cream hover:text-vibrant-coral transition-colors max-sm:hidden">
-            LegacySport
+            Legacy Sports
           </span>
         </NavLink>
 

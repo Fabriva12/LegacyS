@@ -51,15 +51,18 @@ function Category() {
         </h2>
         <div className="grid grid-cols-3 gap-4 mb-4 max-w-lg mx-auto">
           <div>
-            <span className="block text-sm text-gunmetal/60">Jugador</span>
+            <span className="block text-lg font-bold text-gunmetal">Versión Jugador</span>
+            <span className="block text-sm text-gunmetal/60"> camisetas ajustadas al cuerpo escudos termosellados</span>
             <span className="block text-lg font-bold text-gunmetal">₡23.000</span>
           </div>
           <div>
-            <span className="block text-sm text-gunmetal/60">Retro</span>
+            <span className="block text-lg font-bold text-gunmetal">Versión Retro</span>
+            <span className="block text-sm text-gunmetal/60"> camisetas con diseño clásico</span>
             <span className="block text-lg font-bold text-gunmetal">₡23.000</span>
           </div>
           <div>
-            <span className="block text-sm text-gunmetal/60">Fan</span>
+            <span className="block text-lg font-bold text-gunmetal">Versión Fan</span>
+            <span className="block text-sm text-gunmetal/60"> camisetas holgadas con escudos cocidos</span>
             <span className="block text-lg font-bold text-gunmetal">₡22.000</span>
           </div>
         </div>
@@ -93,27 +96,6 @@ function Category() {
           <div>
             <span className="block text-sm text-gunmetal/60">Niños</span>
             <span className="block text-lg font-bold text-gunmetal">₡45.000</span>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  function CalzadoExpressBanner() {
-    if (catSlug !== 'entrega-inmediata' || !segments.includes('calzado')) return null
-    return (
-      <div className="mb-8 p-6 bg-gunmetal/5 rounded-xl border border-gunmetal/10 text-center">
-        <h2 className="text-2xl font-bold text-goldenrod mb-2">
-          ⚡ Entrega Inmediata
-        </h2>
-        <div className="grid grid-cols-2 gap-4 mb-4 max-w-sm mx-auto">
-          <div>
-            <span className="block text-sm text-gunmetal/60">Adultos</span>
-            <span className="block text-lg font-bold text-gunmetal">₡60.000</span>
-          </div>
-          <div>
-            <span className="block text-sm text-gunmetal/60">Niños</span>
-            <span className="block text-lg font-bold text-gunmetal">₡42.000</span>
           </div>
         </div>
       </div>
@@ -156,7 +138,6 @@ function Category() {
 
         <CamisetasBanner />
         <CalzadoBanner />
-        <CalzadoExpressBanner />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {state.folders.map((folder) => (
@@ -195,7 +176,6 @@ function Category() {
 
         <CamisetasBanner />
         <CalzadoBanner />
-        <CalzadoExpressBanner />
 
         {state.products.length === 0 ? (
           <div className="text-center py-12">

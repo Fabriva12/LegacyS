@@ -1,0 +1,8 @@
+# Configuración del workspace pnpm para LegacySport2.0
+# pnpm v11+ requiere que las opciones estén en este archivo, no en package.json
+# https://pnpm.io/settings
+
+allowBuilds:
+  # Firebase y protobuf necesitan build scripts para funcionar correctamente
+  "@firebase/util": true
+  protobufjs: true
