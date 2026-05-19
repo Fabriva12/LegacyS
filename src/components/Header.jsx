@@ -35,7 +35,7 @@ function Header() {
             alt="LegacySport Logo"
             className="h-14 w-auto"
           />
-          <span className="text-2xl font-bold text-mint-cream hover:text-vibrant-coral transition-colors max-sm:hidden">
+          <span className="text-2xl font-bold text-mint-cream hover:text-vibrant-coral transition-colors">
             Legacy Sports
           </span>
         </NavLink>

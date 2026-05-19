@@ -40,7 +40,7 @@ function Home() {
       {/* Sección Hero TRANSPARENTE para ver el fondo fondo.png */}
       <section className="text-center py-12 mb-6 bg-gunmetal/30 text-mint-cream rounded-2xl">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-mint-cream/95 drop-shadow-lg">
-          Bienvenido a LegacySport
+          Bienvenido a Legacy Sports
         </h1>
         <p className="text-xl text-mint-cream/90 max-w-2xl mx-auto">
           Tu tienda de confianza para camisetas exclusivas y calzado deportivo
