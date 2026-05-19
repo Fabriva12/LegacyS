@@ -1,18 +1,16 @@
 # Render Configuration
 # https://render.com/docs/blueprint-spec
 #
-# Web Service con serve -s para SPA routing.
-# serve -s redirige toda ruta no encontrada a index.html
-# permitiendo que React Router maneje la navegación del lado del cliente.
+# Static Site con HashRouter para SPA routing.
+# Al usar HashRouter, las rutas usan #/ en vez de /
+# y nunca llegan al servidor — funciona sin rewrite rules.
 
 services:
-  - type: web
+  - type: static_site
     name: legacysport
-    env: node
-    region: oregon
-    plan: free
     buildCommand: pnpm install && pnpm run build
-    startCommand: serve -s dist -l $PORT
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: false
     envVars:
       - key: VITE_FIREBASE_API_KEY
         sync: false
