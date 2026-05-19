@@ -1,20 +1,18 @@
 # Render Configuration
 # https://render.com/docs/blueprint-spec
 #
-# Este archivo define el servicio como Static Site para SPA.
-# Las rutas se redirigen a index.html para que React Router las maneje.
-# No necesita un servidor Node corriendo — Render sirve los archivos directo del CDN.
+# Web Service con serve -s para SPA routing.
+# serve -s redirige toda ruta no encontrada a index.html
+# permitiendo que React Router maneje la navegación del lado del cliente.
 
 services:
-  - type: static_site
+  - type: web
     name: legacysport
+    env: node
+    region: oregon
+    plan: free
     buildCommand: pnpm install && pnpm run build
-    staticPublishPath: ./dist
-    pullRequestPreviewsEnabled: false
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    startCommand: serve -s dist -l $PORT
     envVars:
       - key: VITE_FIREBASE_API_KEY
         sync: false
